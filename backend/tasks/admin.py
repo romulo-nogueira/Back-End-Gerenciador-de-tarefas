@@ -7,11 +7,11 @@ from .models import Task
 @admin.register(Task)
 class TaskAdmin(admin.ModelAdmin):
     # Colunas que aparecerão na listagem de tarefas no painel
-    list_display = ('title', 'user', 'categoria', 'importante', 'completed', 'created_at')
+    list_display = ('title', 'user', 'categoria')
 
     # Filtros laterais para facilitar a navegação
-    list_filter = ('completed', 'importante', 'categoria', 'user')
+    list_filter = ('categoria', 'user')
 
     # Campos que podem ser usados na barra de busca
-    search_fields = ('title', 'description', 'completed', 'categoria')
+    search_fields = ('title', 'description', 'categoria')
 

@@ -10,10 +10,8 @@ class Task(models.Model):
 
     # Opções para o campo de Categoria que aparecem na /admin
     OPCOES_CATEGORIA = [
-         ('trabalho', 'Trabalho'),
-         ('estudos', 'Estudos'),
-         ('pessoal', 'Pessoal'),
-         ('importante', 'Importante'),
+         ('concluido', 'Concluído'),
+         ('pendente', 'Pendente'),
     ]
 
     # Vincula a tarefa a um usuário (Dono da tarefa)
@@ -27,23 +25,14 @@ class Task(models.Model):
     categoria = models.CharField (
         max_length=50, 
         choices=OPCOES_CATEGORIA,
-        default='trabalho'
+        default='concluido'
     )
 
-    # Controle de prazos (Campo "Dois encontros" da interface)
-    data_entrega = models.DateTimeField(default=datetime.now, blank=True)
+    # Representa quando a tarefa deve começar
+    data_inicio = models.DateTimeField(default=datetime.now, verbose_name="Data de Início")
 
-    # Armazena URLs ou endereços (Campo "Localização / Link")
-    link_localizacao = models.URLField(blank=True, null=True)
-
-    # Caixa de marcar importante
-    importante = models.BooleanField(default=False)
-
-    # Caixa de marcar tarefa completa (Booleanos: Verdadeiro ou Falso)
-    completed = models.BooleanField(default=False)
-
-    created_at = models.DateTimeField(auto_now_add=True) # Data de criação
-    updated_at = models.DateTimeField(auto_now=True) # Última atualização
+    # Representa o prazo final
+    data_entrega = models.DateTimeField(default=datetime.now, blank=True, verbose_name="Date de Término")
     
 
     def __str__(self):
