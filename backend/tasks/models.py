@@ -25,7 +25,7 @@ class Task(models.Model):
     categoria = models.CharField (
         max_length=50, 
         choices=OPCOES_CATEGORIA,
-        default='concluido'
+        default='pendente' # toda tarefa nova vai ficar como pendente
     )
 
     # Representa quando a tarefa deve começar
