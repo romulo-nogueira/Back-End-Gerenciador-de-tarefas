@@ -6,9 +6,11 @@ from .views import TaskViewSet
 router = DefaultRouter()
 
 # Registra o seu ViewSet com o prefixo 'tasks'
-router.register(r'tasks', TaskViewSet, basename='task')
+router.register('tasks', TaskViewSet, basename='task')
+
 
 urlpatterns = [
     # Inclui todas as rotas geradas automaticamente
     path('', include(router.urls)),
+    
 ]
